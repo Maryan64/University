@@ -9,7 +9,7 @@ using Task1CSharp.Interfaces;
 
 namespace Task1CSharp
 {
-    class Program
+    public class Program
     {
         private const string READ_PATH = "../../read.txt";
         private const string WRITE_PATH = "../../write.txt";
