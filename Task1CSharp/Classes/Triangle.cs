@@ -22,7 +22,7 @@ namespace Task1CSharp.Classes
         #region IShape
         public double Area()
         {
-            return 0.5 * ((A.X * B.Y + B.X * C.Y + C.X + A.Y) - (A.Y * B.X + B.Y * C.X + C.Y * A.X));
+            return Math.Sqrt(Perimeter() / 2 * (Perimeter()/2-AB) * (Perimeter() / 2 - BC) * (Perimeter() / 2 - AC));
         }
 
         public double Perimeter()
