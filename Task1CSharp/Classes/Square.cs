@@ -26,6 +26,25 @@ namespace Task1CSharp.Classes
         {
             return Side * 4;
         }
+
+        public bool InThirdQuater()
+        {
+            if(TopLeft.X <= 0 && TopLeft.Y <= 0)
+            {
+                if(BottomRight.X <= 0 && BottomRight.Y <= 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
         #endregion
 
         #region IFileManager

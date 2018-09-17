@@ -27,6 +27,25 @@ namespace Task1CSharp.Classes
         {
             return PI * Radius * Radius;
         }
+
+        public bool InThirdQuater()
+        {
+            if (Center.X < 0 && Center.Y < 0)
+            {
+                if (Math.Abs(Center.X) >= Radius && Math.Abs(Center.Y) >= Radius)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
         #endregion
 
         #region IFileManager

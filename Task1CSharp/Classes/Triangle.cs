@@ -29,6 +29,18 @@ namespace Task1CSharp.Classes
         {
             return AB + AC + BC;
         }
+
+        public bool InThirdQuater()
+        {
+            if (A.X <= 0 && A.Y <= 0 && B.X <= 0 && B.Y <= 0 && C.X <= 0 && C.Y <= 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         #endregion
 
         #region IFileManager

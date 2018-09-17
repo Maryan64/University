@@ -12,12 +12,25 @@ namespace Task1CSharp
     public class Program
     {
         private const string READ_PATH = "../../read.txt";
-        private const string WRITE_PATH = "../../write.txt";
+        private const string WRITE_PATH_FILE1 = "../../file1.txt";
+        private const string WRITE_PATH_FILE2 = "../../file2.txt";
 
         public static void Main(string[] args)
         {
             List<IFigure> list = ReadFiguresFromFile();
-            WriteFiguresToFile(list);
+
+            List<IFigure> listSortedByArea = new List<IFigure>();
+            listSortedByArea = (from t in list
+                                orderby t.Area()
+                                select t).ToList();
+            WriteFiguresToFile(WRITE_PATH_FILE1, listSortedByArea);
+
+            List<IFigure> listSortedByPerimeneter = new List<IFigure>();
+            listSortedByPerimeneter = (from t in list
+                                       where t.InThirdQuater()
+                                       orderby t.Perimeter() descending
+                                       select t).ToList();
+            WriteFiguresToFile(WRITE_PATH_FILE2, listSortedByPerimeneter);
 
             Console.ReadLine();
         }
@@ -57,7 +70,7 @@ namespace Task1CSharp
             return list;
         }
 
-        public static void WriteFiguresToFile(List<IFigure> list)
+        public static void WriteFiguresToFile(string WRITE_PATH ,List<IFigure> list)
         {
             using (StreamWriter sw = new StreamWriter(WRITE_PATH, true, Encoding.Default))
             {

@@ -1,4 +1,6 @@
 Circle
+-3 -3 2
+Circle
 0 0 2
 Square
 2 2 3 3
