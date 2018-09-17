@@ -27,6 +27,25 @@ namespace Task1CSharp.Classes
         {
             return PI * Radius * Radius;
         }
+
+        public bool InThirdQuater()
+        {
+            if (Center.X < 0 && Center.Y < 0)
+            {
+                if (Math.Abs(Center.X) >= Radius && Math.Abs(Center.Y) >= Radius)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
         #endregion
 
         #region IFileManager
@@ -46,7 +65,7 @@ namespace Task1CSharp.Classes
 
         public override string ToString()
         {
-            return $"{nameof(Circle)} with {nameof(Center)}: {Center.ToString()} and {nameof(Radius)}: {Radius}";
+            return $"{nameof(Circle)} with {nameof(Center)}: {Center.ToString()} and {nameof(Radius)}: {Radius}; Area: {Area()}; Perimeter: {Perimeter()}";
         }
     }
 }
