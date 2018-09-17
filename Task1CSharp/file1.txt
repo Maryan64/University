@@ -1,13 +1,4 @@
-Triangle with A: (2, 2) and B: (3, 3) and C: (4, 7)
-Square with TopLeft: (2, 2) and BottomRight: (3, 3)
-Circle with Center: (0, 0) and Radius: 2
-Triangle with A: (2, 2) and B: (3, 3) and C: (4, 7)
-Square with TopLeft: (2, 2) and BottomRight: (3, 3)
-Circle with Center: (0, 0) and Radius: 2
-Triangle with A: (2, 2) and B: (3, 3) and C: (4, 7)
-Square with TopLeft: (2, 2) and BottomRight: (3, 3)
-Circle with Center: (0, 0) and Radius: 2
-Triangle with A: (2, 2) and B: (3, 3) and C: (4, 7)
-Square with TopLeft: (2, 2) and BottomRight: (3, 3)
-Circle with Center: (-3, -3) and Radius: 2
-Circle with Center: (0, 0) and Radius: 2
+Triangle with A: (2, 2) and B: (3, 3) and C: (4, 7); Area: 0,5; Perimeter: 10,9224839951253
+Square with TopLeft: (3, 3) and BottomRight: (2, 2); Area: 1; Perimeter: 4
+Circle with Center: (-3, -3) and Radius: 2; Area: 12,56; Perimeter: 12,56
+Circle with Center: (0, 0) and Radius: 2; Area: 12,56; Perimeter: 12,56

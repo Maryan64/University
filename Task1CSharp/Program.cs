@@ -72,7 +72,7 @@ namespace Task1CSharp
 
         public static void WriteFiguresToFile(string WRITE_PATH ,List<IFigure> list)
         {
-            using (StreamWriter sw = new StreamWriter(WRITE_PATH, true, Encoding.Default))
+            using (StreamWriter sw = new StreamWriter(WRITE_PATH, false, Encoding.Default))
             {
                 foreach (var item in list)
                 {

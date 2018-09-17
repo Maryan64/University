@@ -63,7 +63,7 @@ namespace Task1CSharp.Classes
 
         public override string ToString()
         {
-            return $"{nameof(Triangle)} with {nameof(A)}: {A.ToString()} and {nameof(B)}: {B.ToString()} and {nameof(C)}: {C.ToString()}";
+            return $"{nameof(Triangle)} with {nameof(A)}: {A.ToString()} and {nameof(B)}: {B.ToString()} and {nameof(C)}: {C.ToString()}; Area: {Area()}; Perimeter: {Perimeter()}";
         }
     }
 }

@@ -65,7 +65,7 @@ namespace Task1CSharp.Classes
 
         public override string ToString()
         {
-            return $"{nameof(Circle)} with {nameof(Center)}: {Center.ToString()} and {nameof(Radius)}: {Radius}";
+            return $"{nameof(Circle)} with {nameof(Center)}: {Center.ToString()} and {nameof(Radius)}: {Radius}; Area: {Area()}; Perimeter: {Perimeter()}";
         }
     }
 }
