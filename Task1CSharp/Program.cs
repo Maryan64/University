@@ -18,23 +18,15 @@ namespace Task1CSharp
         public static void Main(string[] args)
         {
             List<IFigure> list = ReadFiguresFromFile();
-
-            List<IFigure> listSortedByArea = new List<IFigure>();
-            listSortedByArea = (from t in list
-                                orderby t.Area()
-                                select t).ToList();
-            WriteFiguresToFile(WRITE_PATH_FILE1, listSortedByArea);
-
-            List<IFigure> listSortedByPerimeneter = new List<IFigure>();
-            listSortedByPerimeneter = (from t in list
-                                       where t.InThirdQuater()
-                                       orderby t.Perimeter() descending
-                                       select t).ToList();
-            WriteFiguresToFile(WRITE_PATH_FILE2, listSortedByPerimeneter);
+            SortByArea(list);
+            SortByPerimeter(list);
 
             Console.ReadLine();
         }
-
+        /// <summary>
+        /// Reads a file "read.txt"
+        /// </summary>
+        /// <returns>List filled with Figures</returns>
         public static List<IFigure> ReadFiguresFromFile()
         {
             List<IFigure> list = new List<IFigure>();
@@ -70,6 +62,11 @@ namespace Task1CSharp
             return list;
         }
 
+        /// <summary>
+        /// Writes data from "list" to file "WRITE_PATH"
+        /// </summary>
+        /// <param name="WRITE_PATH"></param>
+        /// <param name="list"></param>
         public static void WriteFiguresToFile(string WRITE_PATH ,List<IFigure> list)
         {
             using (StreamWriter sw = new StreamWriter(WRITE_PATH, false, Encoding.Default))
@@ -79,6 +76,33 @@ namespace Task1CSharp
                     item.Write(sw);
                 }
             }
+        }
+
+        /// <summary>
+        /// Writes sorted by area list to file "WRITE_PATH_FILE1"
+        /// </summary>
+        /// <param name="list"></param>
+        public static void SortByArea(List<IFigure> list)
+        {
+            List<IFigure> listSortedByArea = new List<IFigure>();
+            listSortedByArea = (from t in list
+                                orderby t.Area()
+                                select t).ToList();
+            WriteFiguresToFile(WRITE_PATH_FILE1, listSortedByArea);
+        }
+
+        /// <summary>
+        /// Writes sorted by perimeter list to file "WRITE_PATH_FILE2"
+        /// </summary>
+        /// <param name="list"></param>
+        public static void SortByPerimeter(List<IFigure> list)
+        {
+            List<IFigure> listSortedByPerimeneter = new List<IFigure>();
+            listSortedByPerimeneter = (from t in list
+                                       where t.InThirdQuater()
+                                       orderby t.Perimeter() descending
+                                       select t).ToList();
+            WriteFiguresToFile(WRITE_PATH_FILE2, listSortedByPerimeneter);
         }
     }
 }
