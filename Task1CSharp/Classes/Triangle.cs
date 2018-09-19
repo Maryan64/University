@@ -22,12 +22,24 @@ namespace Task1CSharp.Classes
         #region IShape
         public double Area()
         {
-            return Math.Sqrt(Perimeter() / 2 * (Perimeter()/2-AB) * (Perimeter() / 2 - BC) * (Perimeter() / 2 - AC));
+            return Math.Sqrt(Perimeter() / 2 * (Perimeter() / 2 - AB) * (Perimeter() / 2 - BC) * (Perimeter() / 2 - AC));
         }
 
         public double Perimeter()
         {
             return AB + AC + BC;
+        }
+
+        public bool InThirdQuater()
+        {
+            if (A.X <= 0 && A.Y <= 0 && B.X <= 0 && B.Y <= 0 && C.X <= 0 && C.Y <= 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         #endregion
 
@@ -51,7 +63,7 @@ namespace Task1CSharp.Classes
 
         public override string ToString()
         {
-            return $"{nameof(Triangle)} with {nameof(A)}: {A.ToString()} and {nameof(B)}: {B.ToString()} and {nameof(C)}: {C.ToString()}";
+            return $"{nameof(Triangle)} with {nameof(A)}: {A.ToString()} and {nameof(B)}: {B.ToString()} and {nameof(C)}: {C.ToString()}; Area: {Area()}; Perimeter: {Perimeter()}";
         }
     }
 }

@@ -10,5 +10,6 @@ namespace Task1CSharp.Interfaces
     {
         double Area();
         double Perimeter();
+        bool InThirdQuater();
     }
 }

@@ -1,1 +1,1 @@
-Circle with Center: (0, 0) and Radius: 4
+Circle with Center: (0, 0) and Radius: 4; Area: 50,24; Perimeter: 25,12

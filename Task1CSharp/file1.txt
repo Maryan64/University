@@ -1,0 +1,4 @@
+Square with TopLeft: (3, 3) and BottomRight: (2, 2); Area: 1; Perimeter: 4
+Triangle with A: (2, 2) and B: (3, 3) and C: (4, 7); Area: 1,5; Perimeter: 10,9224839951253
+Circle with Center: (-3, -3) and Radius: 2; Area: 12,56; Perimeter: 12,56
+Circle with Center: (0, 0) and Radius: 2; Area: 12,56; Perimeter: 12,56

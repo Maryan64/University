@@ -1,1 +1,1 @@
-Square with TopLeft: (0, 4) and BottomRight: (4, 0)
+Square with TopLeft: (0, 4) and BottomRight: (4, 0); Area: 16; Perimeter: 16
