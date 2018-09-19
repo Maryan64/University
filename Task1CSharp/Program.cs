@@ -70,7 +70,7 @@ namespace Task1CSharp
             return list;
         }
 
-        public static void WriteFiguresToFile(string WRITE_PATH ,List<IFigure> list)
+        public static void WriteFiguresToFile(string WRITE_PATH, List<IFigure> list)
         {
             using (StreamWriter sw = new StreamWriter(WRITE_PATH, false, Encoding.Default))
             {
