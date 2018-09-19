@@ -64,13 +64,22 @@ namespace Task1CSharp.Classes
         /// Read and writes all data from "sr" to object propertis
         /// </summary>
         /// <param name="sr"></param>
-        public void Read(StreamReader sr)
+        public bool Read(StreamReader sr)
         {
             string[] fields = sr.ReadLine().Split(' ');
             TopLeft.X = Convert.ToDouble(fields[0]);
             TopLeft.Y = Convert.ToDouble(fields[1]);
             BottomRight.X = Convert.ToDouble(fields[2]);
             BottomRight.Y = Convert.ToDouble(fields[3]);
+            if( TopLeft.Y <= BottomRight.Y || TopLeft.X >= BottomRight.X)
+            {
+                return false;
+            }
+            if (BottomRight.X - TopLeft.X != TopLeft.Y - BottomRight.Y)
+            {
+                return false;
+            }
+            return true;
         }
 
         /// <summary>

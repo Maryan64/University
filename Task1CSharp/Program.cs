@@ -53,8 +53,10 @@ namespace Task1CSharp
 
                     if (figure != null)
                     {
-                        figure.Read(sr);
-                        list.Add(figure);
+                        if (figure.Read(sr))
+                        {
+                            list.Add(figure);
+                        }
                     }                   
                 }
             }

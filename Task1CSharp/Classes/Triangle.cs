@@ -60,7 +60,7 @@ namespace Task1CSharp.Classes
         /// Read and writes all data from "sr" to object propertis
         /// </summary>
         /// <param name="sr"></param>
-        public void Read(StreamReader sr)
+        public bool Read(StreamReader sr)
         {
             string[] fields = sr.ReadLine().Split(' ');
             A.X = Convert.ToDouble(fields[0]);
@@ -69,6 +69,16 @@ namespace Task1CSharp.Classes
             B.Y = Convert.ToDouble(fields[3]);
             C.X = Convert.ToDouble(fields[4]);
             C.Y = Convert.ToDouble(fields[5]);
+
+            double d1, d2, d3;
+            d1 = Math.Pow(Math.Pow((A.X - B.X), 2) + Math.Pow((A.Y - B.Y), 2), 1.0 / 2.0);//довжина AB
+            d2 = Math.Pow(Math.Pow((A.X - C.X), 2) + Math.Pow((A.Y - C.Y), 2), 1.0 / 2.0);//довжина AC
+            d3 = Math.Pow(Math.Pow((B.X - C.X), 2) + Math.Pow((B.Y - C.Y), 2), 1.0 / 2.0);//довжина BC
+            if (d1 + d2 == d3 || d1 + d3 == d2 || d2 + d3 == d1 || )
+            {
+                return false;
+            }
+            return true;
         }
 
         /// <summary>
