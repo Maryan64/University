@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Task1CSharp.Interfaces
 {
     /// <summary>
-    /// 
+    /// Common interface to union methods from IShape and IFileManeger
     /// </summary>
     public interface IFigure : IShape, IFileManager
     {

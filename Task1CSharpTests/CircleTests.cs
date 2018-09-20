@@ -45,23 +45,28 @@ namespace Task1CSharpTests
         public void ReadTest()
         {
             //Arange
-            Circle c = null;
+            Circle validCircle = new Circle();
+            Circle invalidCircle = new Circle();
+            bool validResult;
+            bool invalidResult;
 
             //Act            
             using (StreamReader sr = new StreamReader(READ_PATH, Encoding.Default))
             {
-                c = new Circle();
-                c.Read(sr);
+                validResult = validCircle.Read(sr);
+                invalidResult = invalidCircle.Read(sr);
             }
 
             //Assert
-            Assert.Equal(1, c.Center.X);
-            Assert.Equal(2, c.Center.Y);
-            Assert.Equal(4, c.Radius);
+            Assert.Equal(1, validCircle.Center.X);
+            Assert.Equal(2, validCircle.Center.Y);
+            Assert.Equal(4, validCircle.Radius);
+            Assert.True(validResult);
+            Assert.False(invalidResult);
         }
 
         [Fact]
-        public void Write()
+        public void WriteTest()
         {
             //Act
             using (StreamWriter sw = new StreamWriter(WRITE_PATH, false, Encoding.Default))

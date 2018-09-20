@@ -52,18 +52,24 @@ namespace Task1CSharpTests
         public void ReadTest()
         {
             //Act
-            Triangle triangl;
+            Triangle validTriangle = new Triangle();
+            Triangle invalidTriangle = new Triangle();
+            bool validResult;
+            bool invalidResult;
             using (StreamReader sr = new StreamReader(READ, Encoding.Default))
             {
-                triangl = new Triangle();
-                triangl.Read(sr);
+                validResult = validTriangle.Read(sr);
+                invalidResult = invalidTriangle.Read(sr);
             }
 
-            string realString = triangl.A.X.ToString() + triangl.A.Y.ToString() +
-                triangl.B.X.ToString() + triangl.B.Y.ToString() +
-                triangl.C.X.ToString() + triangl.C.Y.ToString();
-            string expectedString = "012345";
-            Assert.Equal(expectedString, realString);
+            Assert.Equal(0, validTriangle.A.X);
+            Assert.Equal(1, validTriangle.A.Y);
+            Assert.Equal(2, validTriangle.B.X);
+            Assert.Equal(3, validTriangle.B.Y);
+            Assert.Equal(4, validTriangle.C.X);
+            Assert.Equal(9, validTriangle.C.Y);
+            Assert.True(validResult);
+            Assert.False(invalidResult);
         }
 
         [Fact]

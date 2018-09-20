@@ -43,26 +43,30 @@ namespace Task1CSharpTests
         }
 
         [Fact]
-        public void Read()
+        public void ReadTest()
         {
             //ACT
-            Square sq;
+            Square validSquare = new Square();
+            Square invalidSquare = new Square();
+            bool validResult;
+            bool invalidResult;
             using (StreamReader sr = new StreamReader(READ, Encoding.Default))
             {
-                sq = new Square();
-                sq.Read(sr);
+               validResult = validSquare.Read(sr);
+                invalidResult = invalidSquare.Read(sr);
             }
 
-            string expected = "0110";
-            string real = sq.TopLeft.X.ToString() + sq.TopLeft.Y.ToString() +
-                sq.BottomRight.X.ToString() + sq.BottomRight.Y.ToString();
-
             //ASSERT
-            Assert.Equal(expected, real);
+            Assert.Equal(0, validSquare.TopLeft.X);
+            Assert.Equal(1, validSquare.TopLeft.Y);
+            Assert.Equal(1, validSquare.BottomRight.X);
+            Assert.Equal(0, validSquare.BottomRight.Y);
+            Assert.False(invalidResult);
+            Assert.True(validResult);
         }
 
         [Fact]
-        public void Write()
+        public void WriteTest()
         {
             using (StreamWriter sw = new StreamWriter(WRITE, false, Encoding.Default))
             {

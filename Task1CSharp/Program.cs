@@ -17,22 +17,35 @@ namespace Task1CSharp
 
         public static void Main(string[] args)
         {
-            List<IFigure> list = ReadFiguresFromFile();
-            SortByArea(list);
-            SortByPerimeter(list);
-
+            try
+            {
+                List<IFigure> list = ReadFiguresFromFile();
+                SortByArea(list);
+                SortByPerimeter(list);
+            }
+            catch (FileNotFoundException ex)
+            {
+                Log.Message(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Log.Message(ex.Message);
+            }
+            
             Console.ReadLine();
         }
-        /// <summary>
-        /// Reads a file "read.txt"
-        /// </summary>
-        /// <returns>List filled with Figures</returns>
-        public static List<IFigure> ReadFiguresFromFile()
+
+            /// <summary>
+            /// Reads a file "read.txt"
+            /// </summary>
+            /// <returns> List filled with Figures </returns>
+            public static List<IFigure> ReadFiguresFromFile()
         {
             List<IFigure> list = new List<IFigure>();
 
             using (StreamReader sr = new StreamReader(READ_PATH, Encoding.Default))
             {
+                Log.Message($"Begin read from {READ_PATH}");
                 while (!sr.EndOfStream)
                 {
                     string type = sr.ReadLine();
@@ -59,6 +72,8 @@ namespace Task1CSharp
                         }
                     }                   
                 }
+
+                Log.Message($"End read from {READ_PATH}");
             }
 
             return list;
@@ -67,23 +82,26 @@ namespace Task1CSharp
         /// <summary>
         /// Writes data from "list" to file "WRITE_PATH"
         /// </summary>
-        /// <param name="WRITE_PATH"></param>
-        /// <param name="list"></param>
-        public static void WriteFiguresToFile(string WRITE_PATH ,List<IFigure> list)
+        /// <param name="WRITE_PATH"> String path </param>
+        /// <param name="list"> List of figures </param>
+        public static void WriteFiguresToFile(string WRITE_PATH, List<IFigure> list)
         {
             using (StreamWriter sw = new StreamWriter(WRITE_PATH, false, Encoding.Default))
             {
+                Log.Message($"Begin write to {WRITE_PATH}");
                 foreach (var item in list)
                 {
                     item.Write(sw);
                 }
+
+                Log.Message($"End write to {WRITE_PATH}");
             }
         }
 
         /// <summary>
         /// Writes sorted by area list to file "WRITE_PATH_FILE1"
         /// </summary>
-        /// <param name="list"></param>
+        /// <param name="list"> List of figures </param>
         public static void SortByArea(List<IFigure> list)
         {
             List<IFigure> listSortedByArea = new List<IFigure>();
@@ -96,7 +114,7 @@ namespace Task1CSharp
         /// <summary>
         /// Writes sorted by perimeter list to file "WRITE_PATH_FILE2"
         /// </summary>
-        /// <param name="list"></param>
+        /// <param name="list"> list of figures </param>
         public static void SortByPerimeter(List<IFigure> list)
         {
             List<IFigure> listSortedByPerimeneter = new List<IFigure>();
