@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Task1CSharp.Classes
-{
+{ 
     public enum FigureType
     {
         Circle,

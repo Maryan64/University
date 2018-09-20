@@ -17,16 +17,28 @@ namespace Task1CSharp.Classes
         #endregion
 
         #region IShape
+        /// <summary>
+        /// Method to calculate square area
+        /// </summary>
+        /// <returns>square area</returns>
         public double Area()
         {
             return Math.Pow(Side, 2);
         }
 
+        /// <summary>
+        /// Method to calculate square perimeter
+        /// </summary>
+        /// <returns>Square perimeter</returns>
         public double Perimeter()
         {
             return Side * 4;
         }
 
+        /// <summary>
+        /// Calculates if the square belongs to third quater
+        /// </summary
+        /// <returns>True if square belongs to third quater</returns>
         public bool InThirdQuater()
         {
             if (TopLeft.X <= 0 && TopLeft.Y <= 0)
@@ -48,21 +60,42 @@ namespace Task1CSharp.Classes
         #endregion
 
         #region IFileManager
-        public void Read(StreamReader sr)
+        /// <summary>
+        /// Read and writes all data from "sr" to object propertis
+        /// </summary>
+        /// <param name="sr"></param>
+        public bool Read(StreamReader sr)
         {
             string[] fields = sr.ReadLine().Split(' ');
             TopLeft.X = Convert.ToDouble(fields[0]);
             TopLeft.Y = Convert.ToDouble(fields[1]);
             BottomRight.X = Convert.ToDouble(fields[2]);
             BottomRight.Y = Convert.ToDouble(fields[3]);
+            if( TopLeft.Y <= BottomRight.Y || TopLeft.X >= BottomRight.X)
+            {
+                return false;
+            }
+            if (BottomRight.X - TopLeft.X != TopLeft.Y - BottomRight.Y)
+            {
+                return false;
+            }
+            return true;
         }
 
+        /// <summary>
+        /// Writes all objects data to "sw"
+        /// </summary>
+        /// <param name="sw"></param>
         public void Write(StreamWriter sw)
         {
             sw.WriteLine(ToString());
         }
         #endregion
 
+        /// <summary>
+        /// Converts data to user friendly view
+        /// </summary>
+        /// <returns>Converted string</returns>
         public override string ToString()
         {
             return $"{nameof(Square)} with {nameof(TopLeft)}: {TopLeft.ToString()} and {nameof(BottomRight)}: {BottomRight.ToString()}; Area: {Area()}; Perimeter: {Perimeter()}";
