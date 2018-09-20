@@ -41,9 +41,9 @@ namespace Task1CSharp.Classes
         /// <returns>True if square belongs to third quater</returns>
         public bool InThirdQuater()
         {
-            if(TopLeft.X <= 0 && TopLeft.Y <= 0)
+            if (TopLeft.X <= 0 && TopLeft.Y <= 0)
             {
-                if(BottomRight.X <= 0 && BottomRight.Y <= 0)
+                if (BottomRight.X <= 0 && BottomRight.Y <= 0)
                 {
                     return true;
                 }

@@ -1,0 +1,1 @@
+Triangle with A: (0, 0) and B: (3, 3) and C: (5, 0); Area: 7,5; Perimeter: 12,8481919625833
