@@ -10,6 +10,6 @@ namespace Task1CSharp.Interfaces
     public interface IFileManager
     {
         void Write(StreamWriter sw);
-        void Read(StreamReader sr);
+        bool Read(StreamReader sr);
     }
 }

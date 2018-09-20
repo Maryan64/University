@@ -8,6 +8,9 @@ using Task1CSharp.Interfaces;
 
 namespace Task1CSharp.Classes
 {
+    /// <summary>
+    /// Circle class
+    /// </summary>
     public class Circle : IFigure
     {
         private const double PI = 3.14;
@@ -18,16 +21,28 @@ namespace Task1CSharp.Classes
         #endregion
 
         #region IShape
+        /// <summary>
+        /// Method to calculate circle perimeter
+        /// </summary>
+        /// <returns>circle perimeter</returns>
         public double Perimeter()
         {
             return 2 * PI * Radius;
         }        
 
+        /// <summary>
+        /// Method to calculate circle area
+        /// </summary>
+        /// <returns>circle area</returns>
         public double Area()
         {
             return PI * Radius * Radius;
         }
 
+        /// <summary>
+        /// Calculates if the circle belongs to third quater
+        /// </summary>
+        /// <returns>True if circle belongs to third quater</returns>
         public bool InThirdQuater()
         {
             if (Center.X < 0 && Center.Y < 0)
@@ -49,20 +64,39 @@ namespace Task1CSharp.Classes
         #endregion
 
         #region IFileManager
-        public void Read(StreamReader sr)
+        /// <summary>
+        /// Read and writes all data from "sr" to object propertis
+        /// </summary>
+        /// <param name="sr"></param>
+        public bool Read(StreamReader sr)
         {
             string[] fields = sr.ReadLine().Split(' ');
             Center.X = Convert.ToDouble(fields[0]);
             Center.Y = Convert.ToDouble(fields[1]);
             Radius = Convert.ToDouble(fields[2]);
+
+            if (Radius <= 0)
+            {
+                return false;
+            }
+
+            return true;
         }
 
+        /// <summary>
+        /// Writes all objects data to "sw"
+        /// </summary>
+        /// <param name="sw"></param>
         public void Write(StreamWriter sw)
         {
             sw.WriteLine(ToString());
         }
         #endregion
 
+        /// <summary>
+        /// Converts data to user friendly view
+        /// </summary>
+        /// <returns>Converted string</returns>
         public override string ToString()
         {
             return $"{nameof(Circle)} with {nameof(Center)}: {Center.ToString()} and {nameof(Radius)}: {Radius}; Area: {Area()}; Perimeter: {Perimeter()}";

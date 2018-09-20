@@ -11,6 +11,10 @@ namespace Task1CSharp.Classes
         public double X { get; set; }
         public double Y { get; set; }
 
+        /// <summary>
+        /// Convers data to user friendly view
+        /// </summary>
+        /// <returns>Converted string</returns>
         public override string ToString()
         {
             return $"({X}, {Y})";

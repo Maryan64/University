@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Task1CSharp.Interfaces
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IFigure : IShape, IFileManager
     {
     }
