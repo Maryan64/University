@@ -74,8 +74,8 @@ namespace Task1CSharp.Classes
                 TopLeft.Y = Convert.ToDouble(fields[1]);
                 BottomRight.X = Convert.ToDouble(fields[2]);
                 BottomRight.Y = Convert.ToDouble(fields[3]);
-                if ((TopLeft.Y <= BottomRight.Y || TopLeft.X >= BottomRight.X) ||
-                    (BottomRight.X - TopLeft.X != TopLeft.Y - BottomRight.Y))
+                 if ((TopLeft.Y <= BottomRight.Y || TopLeft.X >= BottomRight.X) ||
+                    (Math.Abs(TopLeft.X - BottomRight.X) != Math.Abs(TopLeft.Y - BottomRight.Y)))
                 {
                     Log.Message($"Invalid square coordinates {ToString()}");
 

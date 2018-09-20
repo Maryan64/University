@@ -1,3 +1,5 @@
 Triangle with A: (2, 2) and B: (3, 3) and C: (4, 7); Area: 1,5; Perimeter: 10,92
+Square with TopLeft: (-5, -1) and BottomRight: (-3, -3); Area: 4; Perimeter: 8
+Triangle with A: (-3, -9) and B: (-2, -2) and C: (-5, -5); Area: 9; Perimeter: 15,79
 Circle with Center: (-3, -3) and Radius: 2; Area: 12,56; Perimeter: 12,56
 Circle with Center: (0, 0) and Radius: 2; Area: 12,56; Perimeter: 12,56
