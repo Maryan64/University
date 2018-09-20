@@ -24,7 +24,7 @@ namespace Task1CSharpTests
         [Fact]
         public void InputCorrect()
         {
-           ////Act
+           //Act
             Point p;
             using (StreamReader sr = new StreamReader(READ, Encoding.Default))
             {
@@ -36,7 +36,8 @@ namespace Task1CSharpTests
 
             string real = p.X.ToString() + p.Y.ToString();
             string expected = "105";
-            ////Assert
+
+            //Assert
             Assert.Equal(real, expected);
         }
     }

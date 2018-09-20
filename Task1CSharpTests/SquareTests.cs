@@ -25,25 +25,27 @@ namespace Task1CSharpTests
         [Fact]
         public void PerimeterTest()
         {
-            ////ACT
+            //ACT
             double perimeter = square.Side * 4;
-            ////ASSERT
+
+            //ASSERT
             Assert.Equal(perimeter, square.Perimeter());
         }
 
         [Fact]
         public void AreaTest()
         {
-            ////ACT
+            //ACT
             double area = square.Side * square.Side;
-            ////ASSERT
+
+            //ASSERT
             Assert.Equal(area, square.Area());
         }
 
         [Fact]
         public void Read()
         {
-            ////ACT
+            //ACT
             Square sq;
             using (StreamReader sr = new StreamReader(READ, Encoding.Default))
             {
@@ -54,7 +56,8 @@ namespace Task1CSharpTests
             string expected = "0110";
             string real = sq.TopLeft.X.ToString() + sq.TopLeft.Y.ToString() +
                 sq.BottomRight.X.ToString() + sq.BottomRight.Y.ToString();
-            ////ASSERT
+
+            //ASSERT
             Assert.Equal(expected, real);
         }
 
@@ -75,8 +78,7 @@ namespace Task1CSharpTests
         [Fact]
         public void ThirdQuaterTest()
         {
-            ////ACT
-
+            //ACT
             Square squareFirstQuarter = new Square()
             {
                 BottomRight = new Point() { X = 3, Y = 5 },
@@ -97,7 +99,8 @@ namespace Task1CSharpTests
                 BottomRight = new Point() { X = 3, Y = -5 },
                 TopLeft = new Point() { X = 10, Y = -1 }
             };
-           ////ASSERT
+
+           //ASSERT
             Assert.False(squareFirstQuarter.InThirdQuater());
             Assert.False(squareSecondQuarter.InThirdQuater());
             Assert.True(squareThirdQuarter.InThirdQuater());

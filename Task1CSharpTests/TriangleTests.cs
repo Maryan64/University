@@ -27,17 +27,18 @@ namespace Task1CSharpTests
         [Fact]
         public void PerimeterTest()
         {
-            ////Act
+            //Act
             double result = triangle.Perimeter();
             double expected = triangle.AB + triangle.BC + triangle.AC;
-            ////Assert
+
+            //Assert
             Assert.Equal(result, expected);
         }
 
         [Fact]
         public void AreaTest()
         {
-            ////Act
+            //Act
             double result = triangle.Area();
             double p = triangle.Perimeter() / 2;
             double a = triangle.AB;
@@ -50,7 +51,7 @@ namespace Task1CSharpTests
         [Fact]
         public void ReadTest()
         {
-            ////Act
+            //Act
             Triangle triangl;
             using (StreamReader sr = new StreamReader(READ, Encoding.Default))
             {
@@ -82,12 +83,13 @@ namespace Task1CSharpTests
         [Fact]
         public void ThirdQuaterTest()
         {
-            ////ACT
+            //ACT
             Triangle inFirstQuarter = new Triangle { A = new Point { X = 1, Y = 1 }, B = new Point { X = 2, Y = 2 }, C = new Point { X = 3, Y = 3 } };
             Triangle inSecondQuarter = new Triangle { A = new Point { X = -1, Y = 1 }, B = new Point { X = -2, Y = 2 }, C = new Point { X = -3, Y = 3 } };
             Triangle inThirdQuarter = new Triangle { A = new Point { X = -1, Y = -1 }, B = new Point { X = -2, Y = -2 }, C = new Point { X = -3, Y = -3 } };
             Triangle inFourthQuarter = new Triangle { A = new Point { X = 1, Y = -1 }, B = new Point { X = 2, Y = -2 }, C = new Point { X = 3, Y = -3 } };
-            ////ASSERT
+
+            //ASSERT
             Assert.False(inFirstQuarter.InThirdQuater());
             Assert.False(inSecondQuarter.InThirdQuater());
             Assert.True(inThirdQuarter.InThirdQuater());
