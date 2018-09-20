@@ -22,54 +22,59 @@ namespace Task1CSharpTests
         [Fact] 
         public void PerimeterTest()
         {
-            ////Act
+            //Act
             var result = circle.Perimeter();
             var expected = 2 * PI * radius;
 
-            ////Assert
+            //Assert
             Assert.Equal(expected, result);
         }
 
         [Fact]
         public void AreaTest()
         {
-            ////Act
+            //Act
             var result = circle.Area();
             var expected = PI * radius * radius;
 
-            ////Assert
+            //Assert
             Assert.Equal(expected, result);
         }
 
         [Fact]
         public void ReadTest()
         {
-            ////Arange
-            Circle c = null;
+            //Arange
+            Circle validCircle = new Circle();
+            Circle invalidCircle = new Circle();
+            bool validResult;
+            bool invalidResult;
 
-            ////Act            
+            //Act            
             using (StreamReader sr = new StreamReader(READ_PATH, Encoding.Default))
             {
-                c = new Circle();
-                c.Read(sr);
+                validResult = validCircle.Read(sr);
+                invalidResult = invalidCircle.Read(sr);
             }
 
-            ////Assert
-            Assert.Equal(1, c.Center.X);
-            Assert.Equal(2, c.Center.Y);
-            Assert.Equal(4, c.Radius);
+            //Assert
+            Assert.Equal(1, validCircle.Center.X);
+            Assert.Equal(2, validCircle.Center.Y);
+            Assert.Equal(4, validCircle.Radius);
+            Assert.True(validResult);
+            Assert.False(invalidResult);
         }
 
         [Fact]
-        public void Write()
+        public void WriteTest()
         {
-            ////Act
+            //Act
             using (StreamWriter sw = new StreamWriter(WRITE_PATH, false, Encoding.Default))
             {
                 sw.Write(circle);
             }
 
-            ////Assert
+            //Assert
             using (StreamReader sr = new StreamReader(WRITE_PATH, Encoding.Default))
             {
                 Assert.Equal(circle.ToString(), sr.ReadLine());
@@ -79,13 +84,14 @@ namespace Task1CSharpTests
         [Fact]
         public void ThirdQuaterTest()
         {
-            ////Act
+           //Act
             Circle inFirstQuater = new Circle { Center = new Point { X = 5, Y = 5 }, Radius = 3 };
             Circle inSecondQuater = new Circle() { Center = new Point { X = -5, Y = 5 }, Radius = 2 };
             Circle inThirdQuaterTrully = new Circle() { Center = new Point { X = -5, Y = -5 }, Radius = 4 };
             Circle inThirdQuaterFalsly = new Circle() { Center = new Point { X = -5, Y = -5 }, Radius = 6 };
             Circle inFourthQuater = new Circle() { Center = new Point { X = 5, Y = -5 }, Radius = 3 };
-            ////Assert
+
+            //Assert
             Assert.False(inFirstQuater.InThirdQuater());
             Assert.False(inSecondQuater.InThirdQuater());
             Assert.True(inThirdQuaterTrully.InThirdQuater());

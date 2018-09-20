@@ -37,8 +37,8 @@ namespace Task1CSharp.Classes
 
         /// <summary>
         /// Calculates if the square belongs to third quater
-        /// </summary
-        /// <returns>True if square belongs to third quater</returns>
+        /// </summary>
+        /// <returns> True if square belongs to third quater </returns>       
         public bool InThirdQuater()
         {
             if (TopLeft.X <= 0 && TopLeft.Y <= 0)
@@ -63,29 +63,43 @@ namespace Task1CSharp.Classes
         /// <summary>
         /// Read and writes all data from "sr" to object propertis
         /// </summary>
-        /// <param name="sr"></param>
+        /// <param name="sr"> stream reader </param>
+        /// <returns> is object initialize valid </returns>
         public bool Read(StreamReader sr)
         {
             string[] fields = sr.ReadLine().Split(' ');
-            TopLeft.X = Convert.ToDouble(fields[0]);
-            TopLeft.Y = Convert.ToDouble(fields[1]);
-            BottomRight.X = Convert.ToDouble(fields[2]);
-            BottomRight.Y = Convert.ToDouble(fields[3]);
-            if( TopLeft.Y <= BottomRight.Y || TopLeft.X >= BottomRight.X)
+            try
             {
+                TopLeft.X = Convert.ToDouble(fields[0]);
+                TopLeft.Y = Convert.ToDouble(fields[1]);
+                BottomRight.X = Convert.ToDouble(fields[2]);
+                BottomRight.Y = Convert.ToDouble(fields[3]);
+                if ((TopLeft.Y <= BottomRight.Y || TopLeft.X >= BottomRight.X) ||
+                    (BottomRight.X - TopLeft.X != TopLeft.Y - BottomRight.Y))
+                {
+                    Log.Message($"Invalid square coordinates {ToString()}");
+
+                    return false;
+                }
+                
+                return true;
+            }
+            catch (FormatException ex)
+            {
+                Log.Message(ex.Message);
                 return false;
             }
-            if (BottomRight.X - TopLeft.X != TopLeft.Y - BottomRight.Y)
+            catch (Exception ex)
             {
+                Log.Message(ex.Message);
                 return false;
             }
-            return true;
         }
 
         /// <summary>
         /// Writes all objects data to "sw"
         /// </summary>
-        /// <param name="sw"></param>
+        /// <param name="sw"> stream writer </param>
         public void Write(StreamWriter sw)
         {
             sw.WriteLine(ToString());
@@ -98,7 +112,7 @@ namespace Task1CSharp.Classes
         /// <returns>Converted string</returns>
         public override string ToString()
         {
-            return $"{nameof(Square)} with {nameof(TopLeft)}: {TopLeft.ToString()} and {nameof(BottomRight)}: {BottomRight.ToString()}; Area: {Area()}; Perimeter: {Perimeter()}";
+            return $"{nameof(Square)} with {nameof(TopLeft)}: {TopLeft.ToString()} and {nameof(BottomRight)}: {BottomRight.ToString()}; Area: {Area():0.##}; Perimeter: {Perimeter():0.##}";
         }
     }
 }

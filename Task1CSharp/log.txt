@@ -1,0 +1,31 @@
+12:26:15 -> Could not find file 'C:\Users\Asus\Documents\GitHub\University\Task1CSharp\aread.txt'.
+12:39:17 -> Invalid square coordinates Square with TopLeft: (3, 3) and BottomRight: (2, 2); Area: 1; Perimeter: 4
+12:45:29 -> Invalid square coordinates Square with TopLeft: (3, 3) and BottomRight: (2, 2); Area: 1; Perimeter: 4
+12:45:29 -> Invalid sides of triangle Triangle with A: (1, 1) and B: (2, 2) and C: (3, 3); Area: 0; Perimeter: 5,65685424949238
+12:45:53 -> Invalid square coordinates Square with TopLeft: (3, 3) and BottomRight: (2, 2); Area: 1; Perimeter: 4
+12:45:53 -> Invalid sides of triangle Triangle with A: (1, 1) and B: (2, 2) and C: (3, 3); Area: 0; Perimeter: 5,65685424949238
+12:45:59 -> Invalid square coordinates Square with TopLeft: (3, 3) and BottomRight: (2, 2); Area: 1; Perimeter: 4
+12:45:59 -> Invalid sides of triangle Triangle with A: (1, 1) and B: (2, 2) and C: (3, 3); Area: 0; Perimeter: 5,65685424949238
+12:46:23 -> Invalid square coordinates Square with TopLeft: (3, 3) and BottomRight: (2, 2); Area: 1; Perimeter: 4
+12:46:46 -> Invalid square coordinates Square with TopLeft: (3, 3) and BottomRight: (2, 2); Area: 1; Perimeter: 4
+12:46:46 -> Invalid sides of triangle Triangle with A: (1, 1) and B: (2, 2) and C: (5, 5); Area: NaN; Perimeter: 11,3137084989848
+13:19:04 -> Invalid square coordinates Square with TopLeft: (3, 3) and BottomRight: (2, 2); Area: 1; Perimeter: 4
+13:19:04 -> Invalid sides of triangle Triangle with A: (1, 1) and B: (2, 2) and C: (5, 5); Area: NaN; Perimeter: 11,3137084989848
+13:19:30 -> Invalid square coordinates Square with TopLeft: (3, 3) and BottomRight: (2, 2); Area: 1; Perimeter: 4
+13:19:30 -> Invalid sides of triangle Triangle with A: (1, 1) and B: (2, 2) and C: (5, 5); Area: NaN; Perimeter: 11,3137084989848
+13:23:26 -> Invalid square coordinates Square with TopLeft: (3, 3) and BottomRight: (2, 2); Area: 1; Perimeter: 4
+13:23:26 -> Invalid sides of triangle Triangle with A: (1, 1) and B: (2, 2) and C: (5, 5); Area: NaN; Perimeter: 11,3137084989848
+13:23:42 -> Invalid square coordinates Square with TopLeft: (3, 3) and BottomRight: (2, 2); Area: 1; Perimeter: 4
+13:23:42 -> Invalid sides of triangle Triangle with A: (1, 1) and B: (2, 2) and C: (5, 5); Area: NaN; Perimeter: 11,3137084989848
+13:25:35 -> Invalid square coordinates Square with TopLeft: (3, 3) and BottomRight: (2, 2); Area: 1; Perimeter: 4
+13:25:35 -> Invalid sides of triangle Triangle with A: (1, 1) and B: (2, 2) and C: (5, 5); Area: NaN; Perimeter: 11,31
+13:27:26 -> Invalid square coordinates Square with TopLeft: (3, 3) and BottomRight: (2, 2); Area: 1; Perimeter: 4
+13:27:26 -> Invalid sides of triangle Triangle with A: (1, 1) and B: (2, 2) and C: (5, 5); Area: NaN; Perimeter: 11,31
+13:32:25 -> Begin read from ../../read.txt
+13:32:25 -> Invalid square coordinates Square with TopLeft: (3, 3) and BottomRight: (2, 2); Area: 1; Perimeter: 4
+13:32:25 -> Invalid sides of triangle Triangle with A: (1, 1) and B: (2, 2) and C: (5, 5); Area: NaN; Perimeter: 11,31
+13:32:25 -> End read from ../../read.txt
+13:32:25 -> Begin write to ../../file1.txt
+13:32:25 -> End write to ../../file1.txt
+13:32:25 -> Begin write to ../../file2.txt
+13:32:25 -> End write to ../../file2.txt

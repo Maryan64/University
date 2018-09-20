@@ -6,3 +6,5 @@ Square
 3 3 2 2
 Triangle
 2 2 3 3 4 7
+Triangle
+1 1 2 2 5 5

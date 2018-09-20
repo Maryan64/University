@@ -67,26 +67,41 @@ namespace Task1CSharp.Classes
         /// <summary>
         /// Read and writes all data from "sr" to object propertis
         /// </summary>
-        /// <param name="sr"></param>
+        /// <param name="sr"> stream reader </param>
+        /// <returns> is object initialize valid </returns>
         public bool Read(StreamReader sr)
         {
             string[] fields = sr.ReadLine().Split(' ');
-            Center.X = Convert.ToDouble(fields[0]);
-            Center.Y = Convert.ToDouble(fields[1]);
-            Radius = Convert.ToDouble(fields[2]);
-
-            if (Radius <= 0)
+            try
             {
+                Center.X = Convert.ToDouble(fields[0]);
+                Center.Y = Convert.ToDouble(fields[1]);
+                Radius = Convert.ToDouble(fields[2]);
+
+                if (Radius <= 0)
+                {
+                    Log.Message($"Invalid circle radius {ToString()}");
+                    return false;
+                }
+
+                return true;
+            }
+            catch (FormatException ex)
+            {
+                Log.Message(ex.Message);
                 return false;
             }
-
-            return true;
+            catch (Exception ex)
+            {
+                Log.Message(ex.Message);
+                return false;
+            }
         }
 
         /// <summary>
         /// Writes all objects data to "sw"
         /// </summary>
-        /// <param name="sw"></param>
+        /// <param name="sw"> stream writer </param>
         public void Write(StreamWriter sw)
         {
             sw.WriteLine(ToString());
@@ -99,7 +114,7 @@ namespace Task1CSharp.Classes
         /// <returns>Converted string</returns>
         public override string ToString()
         {
-            return $"{nameof(Circle)} with {nameof(Center)}: {Center.ToString()} and {nameof(Radius)}: {Radius}; Area: {Area()}; Perimeter: {Perimeter()}";
+            return $"{nameof(Circle)} with {nameof(Center)}: {Center.ToString()} and {nameof(Radius)}: {Radius}; Area: {Area():0.##}; Perimeter: {Perimeter():0.##}";
         }
     }
 }

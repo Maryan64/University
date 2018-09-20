@@ -32,7 +32,7 @@ namespace Task1CSharp.Classes
         /// <summary>
         /// Method to calculate triangle perimeter
         /// </summary>
-        /// <returns>Triangle perimeter</returns>
+        /// <returns> Triangle perimeter </returns>
         public double Perimeter()
         {
             return AB + AC + BC;
@@ -40,8 +40,8 @@ namespace Task1CSharp.Classes
 
         /// <summary>
         /// Calculates if the triangle belongs to third quater
-        /// </summary
-        /// <returns>True if triangle belongs to third quater</returns>
+        /// </summary>
+        /// <returns> True if triangle belongs to third quater </returns>
         public bool InThirdQuater()
         {
             if (A.X <= 0 && A.Y <= 0 && B.X <= 0 && B.Y <= 0 && C.X <= 0 && C.Y <= 0)
@@ -59,32 +59,44 @@ namespace Task1CSharp.Classes
         /// <summary>
         /// Read and writes all data from "sr" to object propertis
         /// </summary>
-        /// <param name="sr"></param>
+        /// <param name="sr"> stream reader </param>
+        /// <returns> is object initialize valid </returns>
         public bool Read(StreamReader sr)
         {
             string[] fields = sr.ReadLine().Split(' ');
-            A.X = Convert.ToDouble(fields[0]);
-            A.Y = Convert.ToDouble(fields[1]);
-            B.X = Convert.ToDouble(fields[2]);
-            B.Y = Convert.ToDouble(fields[3]);
-            C.X = Convert.ToDouble(fields[4]);
-            C.Y = Convert.ToDouble(fields[5]);
-
-            double d1, d2, d3;
-            d1 = Math.Pow(Math.Pow((A.X - B.X), 2) + Math.Pow((A.Y - B.Y), 2), 1.0 / 2.0);//довжина AB
-            d2 = Math.Pow(Math.Pow((A.X - C.X), 2) + Math.Pow((A.Y - C.Y), 2), 1.0 / 2.0);//довжина AC
-            d3 = Math.Pow(Math.Pow((B.X - C.X), 2) + Math.Pow((B.Y - C.Y), 2), 1.0 / 2.0);//довжина BC
-            if (d1 + d2 == d3 || d1 + d3 == d2 || d2 + d3 == d1 || )
+            try
             {
+                A.X = Convert.ToDouble(fields[0]);
+                A.Y = Convert.ToDouble(fields[1]);
+                B.X = Convert.ToDouble(fields[2]);
+                B.Y = Convert.ToDouble(fields[3]);
+                C.X = Convert.ToDouble(fields[4]);
+                C.Y = Convert.ToDouble(fields[5]);
+
+                if ((B.X - A.X) * (C.Y - A.Y) - (B.Y - A.Y) * (C.X - A.X) == 0)
+                {
+                    Log.Message($"Invalid sides of triangle {ToString()}");
+                    return false;
+                }
+
+                return true;
+            }
+            catch (FormatException ex)
+            {
+                Log.Message(ex.Message);
                 return false;
             }
-            return true;
+            catch (Exception ex)
+            {
+                Log.Message(ex.Message);
+                return false;
+            }
         }
 
         /// <summary>
         /// Writes all objects data to "sw"
         /// </summary>
-        /// <param name="sw"></param>
+        /// <param name="sw"> stream writer </param>
         public void Write(StreamWriter sw)
         {
             sw.WriteLine(ToString());
@@ -94,10 +106,10 @@ namespace Task1CSharp.Classes
         /// <summary>
         /// Converts data to user friendly view
         /// </summary>
-        /// <returns>Converted string</returns>
+        /// <returns> Converted string </returns>
         public override string ToString()
         {
-            return $"{nameof(Triangle)} with {nameof(A)}: {A.ToString()} and {nameof(B)}: {B.ToString()} and {nameof(C)}: {C.ToString()}; Area: {Area()}; Perimeter: {Perimeter()}";
+            return $"{nameof(Triangle)} with {nameof(A)}: {A.ToString()} and {nameof(B)}: {B.ToString()} and {nameof(C)}: {C.ToString()}; Area: {Area():0.##}; Perimeter: {Perimeter():0.##}";
         }
     }
 }

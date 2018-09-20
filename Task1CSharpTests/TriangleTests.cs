@@ -27,17 +27,18 @@ namespace Task1CSharpTests
         [Fact]
         public void PerimeterTest()
         {
-            ////Act
+            //Act
             double result = triangle.Perimeter();
             double expected = triangle.AB + triangle.BC + triangle.AC;
-            ////Assert
+
+            //Assert
             Assert.Equal(result, expected);
         }
 
         [Fact]
         public void AreaTest()
         {
-            ////Act
+            //Act
             double result = triangle.Area();
             double p = triangle.Perimeter() / 2;
             double a = triangle.AB;
@@ -50,19 +51,25 @@ namespace Task1CSharpTests
         [Fact]
         public void ReadTest()
         {
-            ////Act
-            Triangle triangl;
+            //Act
+            Triangle validTriangle = new Triangle();
+            Triangle invalidTriangle = new Triangle();
+            bool validResult;
+            bool invalidResult;
             using (StreamReader sr = new StreamReader(READ, Encoding.Default))
             {
-                triangl = new Triangle();
-                triangl.Read(sr);
+                validResult = validTriangle.Read(sr);
+                invalidResult = invalidTriangle.Read(sr);
             }
 
-            string realString = triangl.A.X.ToString() + triangl.A.Y.ToString() +
-                triangl.B.X.ToString() + triangl.B.Y.ToString() +
-                triangl.C.X.ToString() + triangl.C.Y.ToString();
-            string expectedString = "012345";
-            Assert.Equal(expectedString, realString);
+            Assert.Equal(0, validTriangle.A.X);
+            Assert.Equal(1, validTriangle.A.Y);
+            Assert.Equal(2, validTriangle.B.X);
+            Assert.Equal(3, validTriangle.B.Y);
+            Assert.Equal(4, validTriangle.C.X);
+            Assert.Equal(9, validTriangle.C.Y);
+            Assert.True(validResult);
+            Assert.False(invalidResult);
         }
 
         [Fact]
@@ -82,12 +89,13 @@ namespace Task1CSharpTests
         [Fact]
         public void ThirdQuaterTest()
         {
-            ////ACT
+            //ACT
             Triangle inFirstQuarter = new Triangle { A = new Point { X = 1, Y = 1 }, B = new Point { X = 2, Y = 2 }, C = new Point { X = 3, Y = 3 } };
             Triangle inSecondQuarter = new Triangle { A = new Point { X = -1, Y = 1 }, B = new Point { X = -2, Y = 2 }, C = new Point { X = -3, Y = 3 } };
             Triangle inThirdQuarter = new Triangle { A = new Point { X = -1, Y = -1 }, B = new Point { X = -2, Y = -2 }, C = new Point { X = -3, Y = -3 } };
             Triangle inFourthQuarter = new Triangle { A = new Point { X = 1, Y = -1 }, B = new Point { X = 2, Y = -2 }, C = new Point { X = 3, Y = -3 } };
-            ////ASSERT
+
+            //ASSERT
             Assert.False(inFirstQuarter.InThirdQuater());
             Assert.False(inSecondQuarter.InThirdQuater());
             Assert.True(inThirdQuarter.InThirdQuater());
