@@ -11,13 +11,25 @@ namespace Task2.MVVM
     [Serializable]
     public class Hexagone
     {
+        public Hexagone()
+        {
+        }
+
+        public Hexagone(Polygon figure)
+        {
+            Points = figure.Points;
+            HexagoneColor = (figure.Fill as SolidColorBrush).Color;
+        }
+
         private PointCollection points;
+
         public PointCollection Points
         {
             get
             {
                 return points;
             }
+
             set
             {
                 if (value.Count != 6)
@@ -28,16 +40,7 @@ namespace Task2.MVVM
                 points = value;
             }
         }
-        public Color HexagoneColor { get; set; }
 
-        public Hexagone()
-        {
-        }
-
-        public Hexagone(Polygon figure)
-        {
-            Points = figure.Points;
-            HexagoneColor = (figure.Fill as SolidColorBrush).Color;
-        }
+        public Color HexagoneColor { get; set; }        
     }
 }
