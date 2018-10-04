@@ -1,0 +1,9 @@
+21:01:17 -> Begin read from ../../read.txt
+21:01:17 -> Invalid circle radius Circle with Center: (3, 3) and Radius: -2; Area: 12,56; Perimeter: -12,56
+21:01:17 -> Invalid square coordinates Square with TopLeft: (3, 3) and BottomRight: (2, 2); Area: 1; Perimeter: 4
+21:01:17 -> Invalid sides of triangle Triangle with A: (1, 1) and B: (2, 2) and C: (5, 5); Area: NaN; Perimeter: 11,31
+21:01:17 -> End read from ../../read.txt
+21:01:17 -> Begin write to ../../file1.txt
+21:01:17 -> End write to ../../file1.txt
+21:01:17 -> Begin write to ../../file2.txt
+21:01:17 -> End write to ../../file2.txt
