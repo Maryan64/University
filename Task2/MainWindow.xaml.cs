@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Task2.MVVM;
 
-namespace Task2
+namespace Task2.MVVM
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

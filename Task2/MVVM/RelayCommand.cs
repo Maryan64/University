@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace Task2.MVVM
 {
-    public class RelayCommand
+    public class RelayCommand : ICommand
     {
         private Action<object> execute;
 
