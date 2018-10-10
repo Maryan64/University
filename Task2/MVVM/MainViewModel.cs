@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -12,21 +11,27 @@ using System.Windows.Input;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Windows.Controls;
+using Microsoft.Win32;
 
 namespace Task2.MVVM
 {
     public class MainViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<Polygon> Hexagones { get; set; }
+
         private Polygon CurrentHexagone { get; set; }
+
         private uint CountHexEdges { get; set; }
+
         private Color currentColor;
+
         public Color CurrentColor
         {
             get
             {
                 return currentColor;
             }
+
             set
             {
                 currentColor = value;
@@ -36,23 +41,35 @@ namespace Task2.MVVM
 
         //Painting
         public ICommand DrawClick_Command { get; private set; }
+
         public ICommand ApplyColor_Command { get; set; }
 
         //File Menu
         public ICommand ClearWindow_Command { get; private set; }
+
         public ICommand OpenFile_Command { get; private set; }
+
         public ICommand SaveFile_Command { get; private set; }
+
         public ICommand CloseWindow_Command { get; private set; }
 
         //Selecting and draging hexogones
         public ICommand SelectHexagone_Command { get; private set; }
+
         public ICommand Drag_Command { get; private set; }
+
+        public int Angles { get; set; }
+
         private bool AllowDragging { get; set; }
+
         private Point MousePosition { get; set; }
+
         private Polygon SelectedHexagone { get; set; }
 
+        public Polygon TestPol { get; set; }
+
         public MainViewModel()
-        {
+        { 
             Hexagones = new ObservableCollection<Polygon>();
             CountHexEdges = 0;
             CurrentColor = Colors.Red;
@@ -63,25 +80,32 @@ namespace Task2.MVVM
             CloseWindow_Command = new RelayCommand(CloseWindow);
             DrawClick_Command = new RelayCommand(DrawClick);
             ApplyColor_Command = new RelayCommand(ApplyColor);
-
             SelectHexagone_Command = new RelayCommand(SelectHexagone);
             Drag_Command = new RelayCommand(Drag);
         }
-
+        
         //Painting
         private void DrawClick(object obj)
         {
+            CountHexEdges++;
             Point mousePoint = Mouse.GetPosition((IInputElement)obj);
             CurrentHexagone.Stroke = Brushes.Black;
-            CurrentHexagone.Points.Add(mousePoint);
-            if (++CountHexEdges == 6)
+            if (Angles > 0)
             {
-                ColorsWindow colorWin = new ColorsWindow(this);
+                Angles--;
+                OnPropertyChanged("Angles");
+                CurrentHexagone.Points.Add(mousePoint);
+            }
+           
+            if (Angles == 0 && CurrentHexagone.Points.Count != 0)
+            {
+                ColorWindow colorWin = new ColorWindow(this);
                 if (colorWin.ShowDialog() == true)
                 {
-                    CurrentHexagone.Fill = new SolidColorBrush(CurrentColor);
+                 CurrentHexagone.Fill = new SolidColorBrush(CurrentColor);
                 }
-                CurrentHexagone.Name = String.Format("Hexagone_{0}", Hexagones.Count + 1);
+
+                CurrentHexagone.Name = String.Format($"Figure{Hexagones.Count+1}");
                 Hexagones.Add(CurrentHexagone);
                 CurrentHexagone = new Polygon();
                 OnPropertyChanged("Hexagones");
@@ -91,9 +115,9 @@ namespace Task2.MVVM
 
         private void ApplyColor(object obj)
         {
-            ColorsWindow colorsWindow = (ColorsWindow)obj;
-            colorsWindow.DialogResult = true;
-            colorsWindow.Close();
+            ColorWindow ColorWindow = (ColorWindow)obj;
+            ColorWindow.DialogResult = true;
+            ColorWindow.Close();
         }
 
         //File Menu
@@ -117,11 +141,13 @@ namespace Task2.MVVM
                 {
                     hexagones = (List<Hexagone>)serializer.Deserialize(reader);
                 }
+
                 Hexagones.Clear();
                 for (int i = 0; i < hexagones.Count; ++i)
                 {
                     Hexagones.Add(new Polygon() { Name = String.Format("Hexagone_{0}", i + 1), Stroke = Brushes.Black, Points = hexagones[i].Points, Fill = new SolidColorBrush(hexagones[i].HexagoneColor) });
                 }
+
                 OnPropertyChanged("Hexagones");
             }
         }
@@ -140,6 +166,7 @@ namespace Task2.MVVM
                 {
                     hexagones.Add(new Hexagone(elem));
                 }
+
                 using (Stream outputFile = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None))
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(List<Hexagone>));
@@ -191,10 +218,10 @@ namespace Task2.MVVM
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
-

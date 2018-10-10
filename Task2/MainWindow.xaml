@@ -7,6 +7,65 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="File">
+                    <MenuItem Header="New" Command="{Binding ClearWindow_Command}"></MenuItem>
+                    <MenuItem Header="Open" Command="{Binding OpenFile_Command}"></MenuItem>
+                    <MenuItem Header="Save" Command="{Binding SaveFile_Command}"></MenuItem>
+                    <Separator></Separator>
+                    <MenuItem Header= "Exit" Command="{Binding CloseWindow_Command}" CommandParameter="{Binding ElementName=MainWindowName}"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Shapes" ItemsSource="{Binding Hexagones}">
+                    <MenuItem.ItemContainerStyle>
+                        <Style TargetType="MenuItem">
+                            <Setter Property="Header" Value="{Binding Name}"/>
+                            <Setter Property="IsCheckable" Value="True"/>
+                            <Setter Property="Command" Value="{Binding DataContext.SelectHexagone_Command, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}, Mode=FindAncestor}}"/>
+                            <Setter Property="CommandParameter" Value="{Binding}"></Setter>
+                        </Style>
+                    </MenuItem.ItemContainerStyle>
+                </MenuItem>
+            </Menu>
+            <ItemsControl ItemsSource="{Binding Hexagones}" DockPanel.Dock="Bottom">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas Name="Surface" IsItemsHost="True" Background="Transparent">
+                            <Canvas.InputBindings>
+                                <MouseBinding Gesture="LeftClick" Command="{Binding DrawClick_Command}" CommandParameter="{Binding ElementName=Surface}" />
+                                <MouseBinding Gesture="RightClick" Command="{Binding Drag_Command}" CommandParameter="{Binding ElementName=Surface}" />
+                            </Canvas.InputBindings>
+                        </Canvas>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+
+        </DockPanel>
+        <DockPanel HorizontalAlignment="Left" Height="88" LastChildFill="False" Margin="598,25,0,0" VerticalAlignment="Top" Width="184">
+
+            <TextBox x:Name="anglesGetter" DockPanel.Dock="Right" Width="50" BorderThickness="0" Text="{Binding Angles, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="0,0,0,7" RenderTransformOrigin="0.5,0.5" FontFamily="Showcard Gothic" FontSize="24" Foreground="#FFD36112">
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-9.281"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <Label Content="Angles:" Height="55" VerticalAlignment="Top" Width="110" RenderTransformOrigin="0.5,0.5" Margin="0,-1,0,0" FontFamily="Segoe UI Black" FontSize="22" Foreground="#FF7D1587" >
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-16.749"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+
+        </DockPanel>
+
     </Grid>
 </Window>
