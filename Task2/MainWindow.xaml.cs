@@ -22,12 +22,12 @@ namespace Task2
     /// </summary>
     public partial class MainWindow:Window
     {
-        ColorWindow cw;
         public MainWindow()
         {
             InitializeComponent();
             DataContext = new MainViewModel();
 
         }
+
     }
 }

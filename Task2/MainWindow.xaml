@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+
         <DockPanel>
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="File">
@@ -39,23 +40,31 @@
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
-            <ItemsControl ItemsSource="{Binding Hexagones}" DockPanel.Dock="Bottom">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <Canvas x:Name="Surface" IsItemsHost="True" Background="Transparent">
-                            <Canvas.InputBindings>
-                                <MouseBinding Gesture="LeftClick" Command="{Binding DrawClick_Command}" CommandParameter="{Binding ElementName=Surface}" />
-                                <MouseBinding Gesture="RightClick" Command="{Binding Drag_Command}" CommandParameter="{Binding ElementName=Surface}" />
-                            </Canvas.InputBindings>
-                        </Canvas>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-            </ItemsControl>
-        </DockPanel>
-        <DockPanel HorizontalAlignment="Left" Height="26" LastChildFill="False" Margin="639,25,0,0" VerticalAlignment="Top" Width="143">
 
-            <TextBox x:Name="anglesGetter" DockPanel.Dock="Right" Width="87" BorderThickness="3" Text="{Binding angles, UpdateSourceTrigger=PropertyChanged}"/>
-            <Label Content="Angles:" Height="28" VerticalAlignment="Top" Width="51" />
+        </DockPanel>
+        <DockPanel HorizontalAlignment="Left" Height="88" LastChildFill="False" Margin="598,25,0,0" VerticalAlignment="Top" Width="184">
+
+            <TextBox x:Name="anglesGetter" DockPanel.Dock="Right" Width="50" BorderThickness="0" Text="{Binding angles, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="0,0,0,7" RenderTransformOrigin="0.5,0.5" FontFamily="Showcard Gothic" FontSize="24" Foreground="#FFD36112">
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-9.281"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <Label Content="Angles:" Height="55" VerticalAlignment="Top" Width="110" RenderTransformOrigin="0.5,0.5" Margin="0,-1,0,0" FontFamily="Segoe UI Black" FontSize="22" Foreground="#FF7D1587" >
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-16.749"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+
         </DockPanel>
 
     </Grid>

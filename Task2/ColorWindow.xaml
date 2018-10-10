@@ -17,12 +17,12 @@
         </Grid.RowDefinitions>
 
         <ComboBox SelectedItem="{Binding CurrentColor}" SelectedIndex="0" Margin="5">
+            <Color>Pink</Color>
             <Color>Red</Color>
             <Color>Blue</Color>
             <Color>Yellow</Color>
             <Color>Green</Color>
             <Color>Orange</Color>
-            <Color>Pink</Color>
         </ComboBox>
         <Rectangle Grid.Row="0" Grid.Column="1" Margin="5">
             <Rectangle.Fill>

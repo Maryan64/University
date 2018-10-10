@@ -51,10 +51,10 @@ namespace Task2.MVVM
         private bool AllowDragging { get; set; }
         private Point MousePosition { get; set; }
         private Polygon SelectedHexagone { get; set; }
-
+        public Polygon TestPol { get; set; }
+        public int AnglesLeft { get; set; }
         public MainViewModel()
-        {
-            
+        { 
             Hexagones = new ObservableCollection<Polygon>();
             CountHexEdges = 0;
             CurrentColor = Colors.Red;
@@ -65,33 +65,43 @@ namespace Task2.MVVM
             CloseWindow_Command = new RelayCommand(CloseWindow);
             DrawClick_Command = new RelayCommand(DrawClick);
             ApplyColor_Command = new RelayCommand(ApplyColor);
-
             SelectHexagone_Command = new RelayCommand(SelectHexagone);
             Drag_Command = new RelayCommand(Drag);
-            
+            AnglesLeft = angles;
+            OnPropertyChanged("AnglesLeft");
         }
-
+        
         //Painting
         private void DrawClick(object obj)
         {
-            
+           
+                CountHexEdges++;
             Point mousePoint = Mouse.GetPosition((IInputElement)obj);
-       
             CurrentHexagone.Stroke = Brushes.Black;
-            CurrentHexagone.Points.Add(mousePoint);
-            if (++CountHexEdges == angles)
+            if (angles > 0)
             {
+                angles--;
+                OnPropertyChanged("angles");
+                CurrentHexagone.Points.Add(mousePoint);
+            }
+           
+            if (angles == 0 && CurrentHexagone.Points.Count!=0)
+            {
+
                 ColorWindow colorWin = new ColorWindow(this);
                 if (colorWin.ShowDialog() == true)
                 {
+
                     CurrentHexagone.Fill = new SolidColorBrush(CurrentColor);
                 }
-                CurrentHexagone.Name = String.Format("Hexagone_{0}", Hexagones.Count + 1);
+
+                CurrentHexagone.Name = String.Format($"Figure{Hexagones.Count+1}");
                 Hexagones.Add(CurrentHexagone);
                 CurrentHexagone = new Polygon();
                 OnPropertyChanged("Hexagones");
                 CountHexEdges = 0;
             }
+
         }
 
         private void ApplyColor(object obj)
@@ -99,6 +109,8 @@ namespace Task2.MVVM
             ColorWindow ColorWindow = (ColorWindow)obj;
             ColorWindow.DialogResult = true;
             ColorWindow.Close();
+            AnglesLeft = angles;
+            OnPropertyChanged("AnglesLeft");
         }
 
         //File Menu

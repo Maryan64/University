@@ -32,10 +32,10 @@ namespace Task2.MVVM
 
             set
             {
-                if (value.Count != 6)
-                {
-                    throw new ArgumentException("Count of points can't be greater than 6");
-                }
+                //if (value.Count != 6)
+                //{
+                //    throw new ArgumentException("Count of points can't be greater than 6");
+                //}
 
                 points = value;
             }
