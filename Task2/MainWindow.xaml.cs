@@ -12,19 +12,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Configuration;
 using Task2.MVVM;
 
-namespace Task2.MVVM
+namespace Task2
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow:Window
     {
+        ColorWindow cw;
         public MainWindow()
         {
             InitializeComponent();
             DataContext = new MainViewModel();
+
         }
     }
 }

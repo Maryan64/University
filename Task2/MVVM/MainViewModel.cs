@@ -47,12 +47,14 @@ namespace Task2.MVVM
         //Selecting and draging hexogones
         public ICommand SelectHexagone_Command { get; private set; }
         public ICommand Drag_Command { get; private set; }
+        public int angles { get; set; }
         private bool AllowDragging { get; set; }
         private Point MousePosition { get; set; }
         private Polygon SelectedHexagone { get; set; }
 
         public MainViewModel()
         {
+            
             Hexagones = new ObservableCollection<Polygon>();
             CountHexEdges = 0;
             CurrentColor = Colors.Red;
@@ -66,17 +68,20 @@ namespace Task2.MVVM
 
             SelectHexagone_Command = new RelayCommand(SelectHexagone);
             Drag_Command = new RelayCommand(Drag);
+            
         }
 
         //Painting
         private void DrawClick(object obj)
         {
+            
             Point mousePoint = Mouse.GetPosition((IInputElement)obj);
+       
             CurrentHexagone.Stroke = Brushes.Black;
             CurrentHexagone.Points.Add(mousePoint);
-            if (++CountHexEdges == 6)
+            if (++CountHexEdges == angles)
             {
-                ColorsWindow colorWin = new ColorsWindow(this);
+                ColorWindow colorWin = new ColorWindow(this);
                 if (colorWin.ShowDialog() == true)
                 {
                     CurrentHexagone.Fill = new SolidColorBrush(CurrentColor);
@@ -91,9 +96,9 @@ namespace Task2.MVVM
 
         private void ApplyColor(object obj)
         {
-            ColorsWindow colorsWindow = (ColorsWindow)obj;
-            colorsWindow.DialogResult = true;
-            colorsWindow.Close();
+            ColorWindow ColorWindow = (ColorWindow)obj;
+            ColorWindow.DialogResult = true;
+            ColorWindow.Close();
         }
 
         //File Menu
