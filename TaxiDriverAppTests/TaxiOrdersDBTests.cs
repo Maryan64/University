@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Taxi_Driver_WPF.IOTypes;
-using Taxi_Driver_WPF.DataTypes;
 using System.Collections.Generic;
+using TaxiDriverApp.DataTypes;
+using TaxiDriverApp.IOTypes;
 
 namespace Taxi_Tests
 {
