@@ -48,14 +48,21 @@ namespace TaxiDriverApp.IOTypes
 
 		public void UpdateDriver(TaxiDriver driverToUpdate)
 		{
-			for (int i = 0; i < allDrivers.Count; ++i)
-			{
-				if (allDrivers[i].Id == driverToUpdate.Id)
-				{
-					allDrivers[i] = driverToUpdate;
-					break;
-				}
-			}
+            try
+            {
+                for (int i = 0; i < allDrivers.Count; ++i)
+                {
+                    if (allDrivers[i].Id == driverToUpdate.Id)
+                    {
+                        allDrivers[i] = driverToUpdate;
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 		}
 
 		public void WriteToFile()

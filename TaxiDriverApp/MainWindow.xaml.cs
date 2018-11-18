@@ -53,10 +53,16 @@ namespace TaxiDriverApp
         }
         private void endOfWork_Click(object sender, RoutedEventArgs e)
         {
-            driversInfo.UpdateDriver(currentDriver);
-            driversInfo.WriteToFile();
-            ordersInfo.WriteToFile();
-            MessageBox.Show(String.Format("Дякуємо за роботу, {0}!", currentDriver.Name), "До побачення");
+            try
+            {
+                driversInfo.UpdateDriver(currentDriver);
+                driversInfo.WriteToFile();
+                ordersInfo.WriteToFile();
+                MessageBox.Show(String.Format("Дякуємо за роботу, {0}!", currentDriver.Name), "До побачення");
+            }
+            catch (Exception)
+            { 
+            }
             Close();
         }
         private void orders_Click(object sender, RoutedEventArgs e)
