@@ -62,6 +62,12 @@
     <Content Include="Drivers.txt" />
     <Content Include="Orders.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TaxiDriverApp\TaxiDriverApp.csproj">
+      <Project>{0f91f4b6-b2fe-4e3c-af7e-985ec01ee4cf}</Project>
+      <Name>TaxiDriverApp</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

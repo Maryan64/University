@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Taxi_Driver_WPF.DataTypes;
+using TaxiDriverApp.DataTypes;
 
 namespace Taxi_Tests
 {
