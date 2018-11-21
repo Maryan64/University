@@ -52,6 +52,24 @@ namespace AdoNet
             }
             reader.Close();
 
+            Console.WriteLine("Show the list of customers’ names who used to order the ‘Tofu’ product, along with the total amount of the product they have ordered and with the total sum for ordered product calculated");
+            command = connection.CreateCommand();
+            command.CommandText = "SELECT DISTINCT C.ContactName AS Name, SUM(OD.Quantity) AS TotalAmount, SUM(OD.Quantity * OD.UnitPrice) AS TotalSum FROM Customers AS C " +
+                "JOIN Orders AS O ON C.CustomerID = O.CustomerID " +
+                "JOIN [Order Details] AS OD ON O.OrderID = OD.OrderID " +
+                "JOIN  Products AS P ON OD.ProductID = P.ProductID " +
+                "WHERE P.ProductName = 'Tofu' " +
+                "GROUP BY C.ContactName;";
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Console.WriteLine($"Name: {reader["Name"]}, TotalAmount: {reader["TotalAmount"]}, TotalSum: {reader["TotalSum"]}");
+            }
+            reader.Close();
+
+
+
+
             Console.WriteLine("\nShow first and last names of the employees as well as the count of orders each of them have received during the year 1997 (use left join)");
             command.CommandText = "SELECT e.FirstName, e.LastName, COUNT(o.EmployeeID) AS OrdersQuantity FROM Employees AS e LEFT JOIN Orders AS o ON o.EmployeeID=e.EmployeeID WHERE o.OrderDate>='1997-01-01' AND o.OrderDate<='1997-12-31' GROUP BY e.FirstName, e.LastName;";
             reader = command.ExecuteReader();
