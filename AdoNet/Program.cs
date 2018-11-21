@@ -61,7 +61,7 @@ namespace AdoNet
             }
             reader.Close();
 
-            Console.WriteLine("\nShow all Customers)");
+            Console.WriteLine("\nShow all Customers");
             command.CommandText = "SELECT * FROM Customers;";
             reader = command.ExecuteReader();
             while (reader.Read())
@@ -78,6 +78,23 @@ namespace AdoNet
                 Console.WriteLine(reader["ContactName"]);
             }
             reader.Close();
+
+            Console.WriteLine("\nShow all Employees");
+            command.CommandText = "SELECT * FROM Employees WHERE EmployeeID=8;";
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                StringBuilder result = new StringBuilder();
+                for (int i = 0; i < reader.FieldCount; i++)
+                {
+                    result.Append($"{reader.GetName(i)}: {reader.GetValue(i).ToString()}  ");
+                }
+
+                Console.WriteLine(result.ToString());
+            }
+            Console.WriteLine();
+            reader.Close();
+
 
             Console.WriteLine("\nShow the list of french customers’ names who used to order french products");
             command.CommandText = "SELECT c.ContactName FROM Customers AS c, Orders AS o WHERE c.CustomerID=o.CustomerID AND c.Country='France' AND o.ShipCountry='France';";
