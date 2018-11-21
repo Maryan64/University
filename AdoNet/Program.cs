@@ -61,6 +61,15 @@ namespace AdoNet
             }
             reader.Close();
 
+            Console.WriteLine("\nShow all Customers)");
+            command.CommandText = "SELECT * FROM Customers;";
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Console.WriteLine(reader["ContactName"]);
+            }
+            reader.Close();
+
             Console.WriteLine("\nShow the list of french customers’ names who have made more than one order (use grouping)");
             command.CommandText = "SELECT c.ContactName FROM Customers AS c, Orders AS o WHERE c.Country='France' GROUP BY c.ContactName HAVING COUNT(o.CustomerID)>1;";
             reader = command.ExecuteReader();
