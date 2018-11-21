@@ -32,7 +32,7 @@ namespace AdoNet
             }
             Console.WriteLine();
             reader.Close();
-            
+
             Console.WriteLine("Show the list of first and last names of the employees from London");
             command = connection.CreateCommand();
             command.CommandText = "SELECT FirstName, LastName FROM Employees WHERE City='London';";
@@ -124,7 +124,7 @@ namespace AdoNet
             insertQuantity += command.ExecuteNonQuery();
             command.CommandText = "INSERT INTO Employees(LastName, FirstName, BirthDate, HireDate, Address, City, Country, Notes) VALUES ('Mykola', 'Baranov', '1998-01-25', '2017-11-14', 'Stryiska st. 18', 'Lviv', 'Ukraine', 'Bohdan');";
             insertQuantity += command.ExecuteNonQuery();
-            command.CommandText = "INSERT INTO Employees(LastName, FirstName, BirthDate, HireDate, Address, City, Country, Notes) VALUES ('Roman', 'Parobiy', '1997-09-14', '2017-11-14', 'Naukova st. 16', 'Lviv', 'Ukraine', 'Bohdan');";
+            command.CommandText = "INSERT INTO Employees(LastName, FirstName, BirthDate, HireDate, Address, City, Country, Notes) VALUES ('Roman', 'Mysh', '1997-09-14', '2017-11-14', 'Naukova st. 16', 'Lviv', 'Ukraine', 'Bohdan');";
             insertQuantity += command.ExecuteNonQuery();
             Console.WriteLine("\nInserted {0} rows", insertQuantity);
 
