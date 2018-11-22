@@ -12,9 +12,9 @@ namespace AdoNet
     {
         static void Main(string[] args)
         {
+            
             string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             SqlConnection connection = new SqlConnection(connectionString);
-
             connection.Open();
             Console.WriteLine("Show all info about the employee with ID 8");
             SqlCommand command = connection.CreateCommand();
@@ -142,7 +142,17 @@ namespace AdoNet
                 Console.WriteLine("{0,-10}{1}", reader["Country"], reader["TotalPrice"]);
             }
             reader.Close();
-
+            //29 завдання
+            Console.WriteLine("\nShow the list of employees’ names along with names of their chiefs (use left join with the same table)");
+            command = connection.CreateCommand();
+            command.CommandText = "SELECT DISTINCT E1.FirstName AS WFN, E1.LastName AS WLN, E2.FirstName AS HFN, E2.LastName AS HLN " +
+                "FROM LargeEmployees AS E1 LEFT JOIN LargeEmployees AS E2 ON E1.ReportsTo = E2.EmployeeID;";
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Console.WriteLine($"Worker: {reader["WFN"]}, {reader["WLN"]}, Head:{reader["HFN"]}, {reader["HLN"]}");
+            }
+            reader.Close();
             //Insert 5 new records into Employees table. Fill in the following  fields: LastName, FirstName, BirthDate, HireDate, Address, City, Country, Notes. The Notes field should contain your own name.
             int insertQuantity = 0;
             command.CommandText = "INSERT INTO Employees(LastName, FirstName, BirthDate, HireDate, Address, City, Country, Notes) VALUES ('Bohdan', 'Romaniuk', '1997-07-23', '2017-11-14', 'Shevchenka st. 78', 'Lviv', 'Ukraine', 'Bohdan');";
