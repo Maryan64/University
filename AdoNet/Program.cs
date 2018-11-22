@@ -32,7 +32,7 @@ namespace AdoNet
             }
             Console.WriteLine();
             reader.Close();
-
+            //2
             Console.WriteLine("Show the list of first and last names of the employees from London");
             command = connection.CreateCommand();
             command.CommandText = "SELECT FirstName, LastName FROM Employees WHERE City='London';";
@@ -42,7 +42,7 @@ namespace AdoNet
                 Console.WriteLine("{0}\t{1}", reader["FirstName"], reader["LastName"]);
             }
             reader.Close();
-
+            //5
             Console.WriteLine("\nCalculate the count of employees from London");
             command.CommandText = "SELECT COUNT(*) AS EmployeeQuantity FROM Employees WHERE City='London';";
             reader = command.ExecuteReader();
@@ -151,6 +151,16 @@ namespace AdoNet
             while (reader.Read())
             {
                 Console.WriteLine($"Worker: {reader["WFN"]}, {reader["WLN"]}, Head:{reader["HFN"]}, {reader["HLN"]}");
+            }
+            reader.Close();
+            //3 Завдання
+            Console.WriteLine("Show the list of first and last names of the employees whose first name begins with letter A.");
+            command = connection.CreateCommand();
+            command.CommandText = "SELECT FirstName, LastName FROM Employees WHERE FirstName like 'A%';";
+            reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Console.WriteLine("{0}\t{1}", reader["FirstName"], reader["LastName"]);
             }
             reader.Close();
             //Insert 5 new records into Employees table. Fill in the following  fields: LastName, FirstName, BirthDate, HireDate, Address, City, Country, Notes. The Notes field should contain your own name.
