@@ -22,10 +22,7 @@ namespace TaxiDriverApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        private TaxiDriver currentDriver;
-        private ClientsDB clientsInfo;
-        private DriversDB driversInfo;
-        private OrdersDB ordersInfo;
+     
         private int counter;
 
         private void AddClientsInfo()
