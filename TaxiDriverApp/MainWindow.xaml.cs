@@ -27,6 +27,26 @@ namespace TaxiDriverApp
         private DriversDB driversInfo;
         private OrdersDB ordersInfo;
         private int counter;
+
+        private void AddClientsInfo()
+        {
+            using (var cont = new DriverContext())
+            {
+                var modest = new TaxiClient("Модест", "+380964569852");
+                var vlad = new TaxiClient("Влад", "+380935263145");
+                var yura = new TaxiClient("Юра", "+380965214563");
+                var solomiua = new TaxiClient("Соломія", "+380964256312");
+                var bohdan = new TaxiClient("Богдан", "+380968145263");
+
+                cont.Clients.Add(modest);
+                cont.Clients.Add(vlad);
+                cont.Clients.Add(yura);
+                cont.Clients.Add(solomiua);
+                cont.Clients.Add(bohdan);
+                cont.SaveChanges();
+            }
+        }
+
         public MainWindow()
         {
             InitializeComponent();
