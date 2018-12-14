@@ -1,8 +1,8 @@
 ﻿using System;
-using Entity_Framework__Repository__UnitOfWork.DataTypes;
-using Entity_Framework__Repository__UnitOfWork.Repository;
+using TaxiDriverApp.DataTypes;
+using TaxiDriverApp.Repository;
 
-namespace Entity_Framework__Repository__UnitOfWork.UnitOfWorkNS
+namespace TaxiDriverApp.UnitOfWorkNS
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaxiDriverApp"
         mc:Ignorable="d"
-        Title= "Водій таксі" Height="420" Width="730" Name="MainTaxiDriverWindow" Icon="taxi-icon.ico">
+        Title= "Водій таксі" Height="420" Width="730" Name="MainTaxiDriverWindow" Icon="taxi-icon.ico" Closing="MainTaxiDriverWindow_Closing">
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />

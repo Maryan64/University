@@ -2,179 +2,57 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 namespace TaxiDriverApp.DataTypes
 {
-	public class TaxiOrder
-	{
-		private uint id;
-		private TaxiClient client;
-		private TaxiDriver driver;
-		private DateTime arriveTime;
-		private string dispatch;
-		private string destination;
-		private uint roadTime;
-		private uint cost;
-		private bool isDone;
+    [Table("Orders")]
+    public class TaxiOrder
+    {
+        [Key]
+        public int OrderId { get; set; }
 
-		public uint Id
-		{
-			get
-			{
-				return id;
-			}
+        public TaxiClient Client { get; set; }
 
-			set
-			{
-				if (value < 0)
-				{
-					throw new ArgumentOutOfRangeException("Id cant be <0");
-				}
+        public TaxiDriver Driver { get; set; }
 
-				id = value;
-			}
-		}
+        [Required]
+        public DateTime ArriveTime { get; set; }
+        //Convert.ToDateTime("2017-12-07 19:00"), "Наукова,178", "Пасічна,89", 0, 0, false
+        [MaxLength(200)]
+        [Required]
+        public string Dispatch { get; set; }
 
-		public TaxiClient Client
-		{
-			get
-			{
-				return client;
-			}
+        [MaxLength(200)]
+        [Required]
+        public string Destination { get; set; }
 
-			set
-			{
-				client = value;
-			}
-		}
+        [Required]
+        public int RoadTime { get; set; }
 
-		public TaxiDriver Driver
-		{
-			get
-			{
-				return driver;
-			}
+        [Required]
+        public int Cost { get; set; }
 
-			set
-			{
-				driver = value;
-			}
-		}
+        [Required]
+        public bool IsDone { get; set; }
 
-		public DateTime ArriveTime
-		{
-			get
-			{
-				return arriveTime;
-			}
-
-			set
-			{
-				arriveTime = value;
-			}
-		}
-
-		public string Dispatch
-		{
-			get
-			{
-				return dispatch;
-			}
-
-			set
-			{
-				if (value == null)
-				{
-					throw new ArgumentOutOfRangeException("Dispatch is not set!");
-				}
-				dispatch = value;
-			}
-		}
-
-		public string Destination
-		{
-			get
-			{
-				return destination;
-			}
-
-			set
-			{
-				if (value.Equals(dispatch))
-				{
-					throw new ArgumentOutOfRangeException("Destination and dispatch are the same place!");
-				}
-				destination = value;
-			}
-		}
-
-		public uint RoadTime
-		{
-			get
-			{
-				return roadTime;
-			}
-
-			set
-			{
-				if (value < 0)
-				{
-					throw new ArgumentOutOfRangeException("Road time can only be >= than 0!");
-				}
-				roadTime = value;
-			}
-		}
-
-		public uint Cost
-		{
-			get
-			{
-				return cost;
-			}
-
-			set
-			{
-				if (value < 0)
-				{
-					throw new ArgumentOutOfRangeException("Cost must be >= than 0!");
-				}
-				cost = value;
-			}
-		}
-
-		public bool IsDone
-		{
-			get
-			{
-				return isDone;
-			}
-
-			set
-			{
-				isDone = value;
-			}
-		}
-
-		public TaxiOrder()
-		{
-		}
-
-		public TaxiOrder(uint _id, TaxiClient _client, TaxiDriver _driver, DateTime _arrive, string _dispatch, string _destination, uint _roadTime, uint _cost = 0, bool _isDone = false)
-		{
-			Id = _id;
-			Client = _client;
-			Driver = _driver;
-			ArriveTime = _arrive;
-			Dispatch = _dispatch;
-			Destination = _destination;
-			RoadTime = _roadTime;
-			Cost = _cost;
-			IsDone = _isDone;
-		}
-
-		public override string ToString()
-		{
-			return String.Format("{0} {1} {2} {3} {4} {5} {6} {7} {8}", Id, Client.Id, Driver.Id, ArriveTime.ToString("yyyy-MM-dd_HH:mm"), Dispatch, Destination, RoadTime, Cost, IsDone);
-		}
-	}
+        public TaxiOrder()
+        {
+        }
+        public TaxiOrder(TaxiClient _client, TaxiDriver _driver, DateTime _arrive, string _dispatch, string _destination, int _roadTime, int _cost = 0, bool _isDone = false)
+        {
+            Client = _client;
+            Driver = _driver;
+            ArriveTime = _arrive;
+            Dispatch = _dispatch;
+            Destination = _destination;
+            RoadTime = _roadTime;
+            Cost = _cost;
+            IsDone = _isDone;
+        }
+        public override string ToString()
+        {
+            return String.Format("{0} {1} {2} {3} {4} {5} {6} {7} {8}", OrderId, Client, Driver, ArriveTime.ToString("yyyy-MM-dd_HH:mm"), Dispatch, Destination, RoadTime, Cost, IsDone);
+        }
+    }
 }

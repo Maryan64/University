@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TaxiDriverApp.DataTypes;
-using TaxiDriverApp.IOTypes;
 using System.Windows.Threading;
 namespace TaxiDriverApp
 {
@@ -55,7 +54,7 @@ namespace TaxiDriverApp
         private void endRoad_Click(object sender, RoutedEventArgs e)
         {
             dispatcherTimer.Stop();
-            currentOrder.RoadTime = (uint)elapsedTime.TotalSeconds;
+            currentOrder.RoadTime = (int)elapsedTime.TotalSeconds;
             currentOrder.IsDone = true;
             currentOrder.Cost = currentOrder.Driver.CostPerMinute * currentOrder.RoadTime / 60;
             roadCostDesc.Content = currentOrder.Cost + " грн";
@@ -65,7 +64,6 @@ namespace TaxiDriverApp
                 if (item.Name == "MainTaxiDriverWindow")
                 {
                     (item as MainWindow).updateOrders(currentOrder);
-                    (item as MainWindow).updateCounter();
                     break;
                 }
             }
